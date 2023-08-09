@@ -1,0 +1,23 @@
+<svg width="800px" height="800px" viewBox="-19.2 -19.2 230.40 230.40" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#000000">
+
+<g id="SVGRepo_bgCarrier" stroke-width="0">
+
+<rect x="-19.2" y="-19.2" width="230.40" height="230.40" rx="20.736" fill="#2a2727" strokewidth="0"/>
+
+</g>
+
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="1.536"/>
+
+<g id="SVGRepo_iconCarrier">
+
+<circle cx="53.5" cy="53.5" r="31.5" stroke="#ffffff" stroke-width="14.4"/>
+
+<circle cx="53.5" cy="138.5" r="31.5" stroke="#ffffff" stroke-width="14.4"/>
+
+<circle cx="138.5" cy="138.5" r="31.5" stroke="#ffffff" stroke-width="14.4"/>
+
+<path stroke="#ffffff" stroke-linecap="round" stroke-width="14.4" d="m113 28 25.5 25.5M164 79l-25.5-25.5m0 0L164 28m-25.5 25.5L113 79"/>
+
+</g>
+
+</svg>
