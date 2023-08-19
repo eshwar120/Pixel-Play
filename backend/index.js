@@ -9,6 +9,7 @@ const userRoute = require('./routes/userRoute');
 const productRoute = require('./routes/productRoute');
 const reviewRoute = require('./routes/reviewRoute');
 const orderRoute = require('./routes/orderRoute');
+const stripeRoute = require('./routes/stripeRoute');
 require('dotenv').config();
 PORT = process.env.PORT || 8080
 
@@ -28,6 +29,7 @@ app.use(bodyParserErrorHandler());
 app.use("/api/users",userRoute);
 app.use('/api/products', productRoute);
 app.use('/api/reviews', reviewRoute);
+app.use('/api/neworder', stripeRoute);
 app.use('/api/orders', orderRoute);
 
 app.use("/*", (req,res) => {

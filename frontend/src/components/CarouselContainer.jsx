@@ -51,8 +51,8 @@ export default function CarouselContainer() {
         {
           banner.map((item, index) => {
             return (
-              <div>
-                <img key={index} className='carousel-img' src={item.link} alt={item.alt} />
+              <div key={`${index}`}>
+                <img  className='carousel-img' src={item.link} alt={item.alt} />
                 {/* <p className="legend">GOD OF WAR</p> */}
               </div>
             )

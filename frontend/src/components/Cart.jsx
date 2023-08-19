@@ -3,7 +3,7 @@ import { UserContext } from '../context/UserConext'
 import shoppingCart from '../assets/cart.gif'
 import { Link } from 'react-router-dom';
 import CartItem from './CartItem';
-import cart from '../assets/cart.svg'
+import Checkout from './Checkout';
 
 export default function Cart() {
 
@@ -38,7 +38,7 @@ export default function Cart() {
             </div>
           </>
           :
-          <div className='d-flex gap-lg-4 gap-sm-3 gap-2 flex-column p-lg-5 p-sm-3 p-2'>
+          <div className='d-flex gap-1 flex-column p-lg-5 p-sm-3 p-2'>
             {
               cartData.map((item, index) => {
                 return (
@@ -50,12 +50,7 @@ export default function Cart() {
               <h4>Total</h4>
               <h4 className='mb-1 text-center'>&#8377;{total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h4>
             </div>
-            <button
-              className='btn btn-outline-success font-bold p-3 gap-2 d-flex text-light justify-content-center align-items-center fs-5 '
-            >
-              <img src={cart} alt="cart" width={"30px"} />
-              Check out
-            </button>
+            <Checkout/>
           </div>
 
       }

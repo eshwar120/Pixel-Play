@@ -18,6 +18,7 @@ import Profile from './components/Profile'
 import { useContext } from 'react'
 import OrdersInfo from './components/OrdersInfo'
 import Order from './components/Order'
+import CheckoutSuccess from './components/CheckoutSuccess'
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
         <Route path='/signup' element={<SignUp />} />
         <Route path="/" element={<Home />} />
         <Route path='/cart' element={<Cart />} />
+        <Route path='/checkout-success' element={<CheckoutSuccess/>}/>
         <Route path='/orders' element={<OrdersInfo />} />
         <Route path="/orders/:orderID" element={<Order />} />
         <Route path='/product/:productID' element={<ProductInfo />} />
