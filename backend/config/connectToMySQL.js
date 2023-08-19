@@ -1,14 +1,32 @@
-const mySql = require('mysql2');
-require('dotenv').config()
+const mySql = require("mysql2/promise");
+require("dotenv").config();
 
 // const connectDB = mySql.createConnection(process.env.DATABASE_URL);
+// exports.databaseConnection  = connectDB;
+
+async function query(sql, values) {
+  try {
+    const connection = await mySql.createConnection(process.env.DATABASE_URL);
+
+    //result will have our query result and temp will be the schema
+    const [results, ...temp] = await connection.execute(sql, values);
+    connection.end();
+
+    return results;
+  } catch (err) {
+    console.error("Error getting connection:", err.message);
+    throw err;
+  }
+}
+
+module.exports = {
+  query,
+};
 
 // Create a connection pool
-const pool = mySql.createPool(process.env.DATABASE_URL);
+// const pool = mySql.createPool(process.env.DATABASE_URL);
 
-module.exports = pool;
-
-
+// module.exports = pool;
 
 // pool.query('SELECT * FROM Products', (err, results) => {
 //     if (err) {

@@ -10,9 +10,7 @@ export default function ProductInfo() {
 
   const { productID } = useParams();
   const { SERVER_ADDRESS, addToCart } = useContext(UserContext);
-  const [productData, setProductData] = useState({
-
-  });
+  const [productData, setProductData] = useState({});
   const handleAddToCart = () => {
     addToCart(productData);
   }
@@ -20,8 +18,8 @@ export default function ProductInfo() {
   useEffect(() => {
     axios.get(`${SERVER_ADDRESS}products/${productID}`)
       .then(response => {
-        // console.log(response.data.productData[0])
-        setProductData(response.data.productData[0])
+        console.log(response.data.productsData[0])
+        setProductData(response.data.productsData[0])
       })
       .catch(err => console.log(err.message))
   }, [])
