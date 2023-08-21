@@ -20,7 +20,7 @@ function UserContextProvider({ children }) {
 
 
     const value = {
-        SERVER_ADDRESS: "http://localhost:8080/api/",
+        SERVER_ADDRESS: import.meta.env.VITE_SERVER_URL,
         userData: userData,
         updateUserData: (data) => {
             const { userID, email, name } = data;

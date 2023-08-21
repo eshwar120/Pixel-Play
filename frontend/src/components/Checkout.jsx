@@ -15,7 +15,7 @@ export default function Checkout() {
     };
 
     const handleChekout = () => {
-        axios.post(`${import.meta.env.VITE_SERVER_URL}/neworder`, cartData, config )
+        axios.post(`${import.meta.env.VITE_SERVER_URL}neworder`, cartData, config )
             .then(res => {
                 // console.log(res);
                 window.location.href= res.data.url;
