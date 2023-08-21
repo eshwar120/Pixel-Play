@@ -15,21 +15,23 @@ export default function CardContainer({item}) {
   }
 
   return (
-    <div className='d-flex flex-column card-width bg-dark text-light rounded gap-1 p-2 overflow-hidden product-card object-fit-fill'>
+    <div className='d-flex flex-column card-width bg-dark text-light rounded gap-1  overflow-hidden product-card object-fit-fill position-relative'>
       <Link to={`/product/${item.productID}`}>
       <img 
       src={item.image} 
       alt={item.productName} 
       className='rounded card-image'/>
       </Link>
-      <h6 className='text-center mb-0 font-weight-bold text-truncate'>{item.productName}</h6>
-      <p className='text-center mb-0'>&#8377;{item.price}</p>
+      <span className=' card-button p-1'>
+      <h6 className='text-center mb-0 font-weight-bold text-truncate card-text-width'>{item.productName}</h6>
+      <p className='text-center mb-0 card-text-width mb-1'>&#8377;{item.price}</p>
       <button 
       onClick={handleAddToCart}
-      className='btn btn-outline-success gap-2 d-flex text-light justify-content-center align-items-center'>
+      className='btn btn-success gap-2 d-flex text-light justify-content-center align-items-center m-auto '>
         <img src={cart} alt="cart" width={"25px"}/>
         <p className='mb-0 hide-at-576px'>Add to cart</p>
       </button>
+      </span>
     </div>
   )
 }

@@ -3,7 +3,8 @@
     object-position: 50% 50%;
     width: 800px;
     height: 50vw;
-    max-height: 500px;
+    max-height: 400px;
+    /* max-height: 500px; */
 }
 .carousel-container{
     width: 100%; 

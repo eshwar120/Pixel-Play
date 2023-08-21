@@ -26,7 +26,7 @@ export default function Home() {
 
 
   return (
-    <div className='d-flex flex-column align-items-center p-lg-5 p-sm-3 p-2 vh-100-nav'>
+    <div className='d-flex flex-column align-items-center p-lg-5 p-sm-3 p-2 vh-100-nav max-width'>
       <CarouselContainer />
       <div className='d-flex flex-wrap p-lg-2 p-sm-1 p-1 gap-lg-4 gap-sm-3 gap-2 align-items-center justify-content-center'>
         {

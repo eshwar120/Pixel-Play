@@ -25,24 +25,24 @@ export default function ProductInfo() {
   }, [])
 
   return (
-    <div className='  padding-1 p-sm-5'>
+    <div className='  padding-1 p-sm-5 max-width vh-100-nav'>
       <div className='d-flex image-and-info gap-5 text-light'>
         <div className='image-container-product-info'>
           <img className='productinfo-img-width rounded' src={productData.image} alt={productData.productName} />
         </div>
         <div className='d-flex gap-2 flex-wrap flex-column text-light'>
-          <h3 className='display-4'>{productData.productName}</h3>
-          <h2>&#8377;{
+          <h3 className=''>{productData.productName}</h3>
+          <h2 className=''>&#8377;{
             productData.price ?
               productData.price.replace(/\B(?=(\d{3})+(?!\d))/g, ",") :
               "..."
           }</h2>
           <div>
-            <h4 className=''>Description :</h4>
-            <p className='lead'>{productData.description}</p>
+            <h5 className=''>Description :</h5>
+            <p className=''>{productData.description}</p>
           </div>
           <div>
-            <h4>Rating :</h4>
+            <h5>Rating :</h5>
             <Rating
               style={{ maxWidth: 150 }}
               value={4.3}
