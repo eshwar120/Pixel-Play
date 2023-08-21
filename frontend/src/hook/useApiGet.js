@@ -11,6 +11,7 @@ const useApiGet = (path) => {
             authorization: `Bearer ${token}`
         }
     };
+    console.log(SERVER_ADDRESS)
 
     useEffect(() => {
 
