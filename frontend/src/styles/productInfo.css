@@ -10,6 +10,8 @@
 @media screen and (width <= 575px){
     .productinfo-img-width{
         width: 100%;
-        max-width: 350px;
+        max-width: 200px;
     }
 }
+
+

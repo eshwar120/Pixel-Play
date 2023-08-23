@@ -11,7 +11,7 @@ productRoute.get("", async (req, res) => {
     const results = await db.query(sqlQuery);
     res.status(200).json({
       message: "Products fetched successfully",
-      productsData: results,
+      data: results,
     });
   } catch (err) {
     return res.status(500).json({ message: "Something went wrong" });
@@ -32,7 +32,7 @@ productRoute.get("/search/:name", async (req, res) => {
 
         res.status(200).json({
           message: "Product fetched successfully",
-          productsData: result,
+          data: result,
         });
     } else {
       res.status(400).json({ message: "Please provide name" });
@@ -62,7 +62,7 @@ productRoute.get("/:id", async (req, res) => {
         }
         res.status(200).json({
           message: "Products fetched successfully",
-          productsData: result,
+          data: result,
         });
     } else {
       res.status(400).json({ message: "Please provide id" });
@@ -110,7 +110,7 @@ productRoute.patch("/:id", authMiddeware, (req, res) => {
             console.log(result);
             res.status(200).json({
               message: "Products updated successfully",
-              productData: result,
+              data: result,
             });
           });
         });
