@@ -13,7 +13,7 @@ function UserContextProvider({ children }) {
         name: localStorage.getItem("name") || "unknown",
     };
     let tkn = localStorage.getItem("tkn");
-    console.log(tkn)
+    // console.log(tkn)
     const [cartData, setCartData] = useState(localStorage.getItem("cartData") !== null ? JSON.parse(localStorage.getItem("cartData")) : []);
     // console.log(cartData)
     // console.log(localStorage.getItem('cartData'))

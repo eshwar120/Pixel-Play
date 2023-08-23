@@ -59,7 +59,7 @@ addProductController.use("", upload.single("image"), async (req, res) => {
     const result = await db.query(sqlQuery);
     res.status(201).json({
       message: "Products added successfully",
-      productData: result,
+      data: result,
     });
   } catch (e) {
     return res.status(500).json({
