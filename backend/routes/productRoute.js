@@ -25,15 +25,15 @@ productRoute.get("/search/:name", async (req, res) => {
       const sqlQuery = `SELECT productName,productID,price,image 
                         From Products 
                         WHERE productName Like '%${name}%'`;
-        const result = await db.query(sqlQuery);
-        if (result.length === 0) {
-          return res.status(404).json({ message: "name not found" });
-        }
+      const result = await db.query(sqlQuery);
+      if (result.length === 0) {
+        return res.status(404).json({ message: "name not found" });
+      }
 
-        res.status(200).json({
-          message: "Product fetched successfully",
-          data: result,
-        });
+      res.status(200).json({
+        message: "Product fetched successfully",
+        data: result,
+      });
     } else {
       res.status(400).json({ message: "Please provide name" });
     }
@@ -47,23 +47,34 @@ productRoute.get("/:id", async (req, res) => {
   try {
     const id = Number(req.params.id);
     if (id) {
-      const sqlQuery = `
-                        SELECT *
-                        FROM Reviews
-                        LEFT JOIN Products ON Reviews.productID = Products.productID
-                        UNION
-                        SELECT *
-                        FROM Reviews
-                        RIGHT JOIN Products ON Reviews.productID = Products.productID
-                        WHERE Products.productID = '${id}'`;
-        const result = await db.query(sqlQuery);
-        if (result.length === 0) {
-          return res.status(404).json({ message: "Id not found" });
-        }
-        res.status(200).json({
-          message: "Products fetched successfully",
-          data: result,
-        });
+      const sqlQuery = `SELECT
+      P.productID,
+      P.productName,
+      P.price,
+      P.description,
+      P.image,
+      JSON_ARRAYAGG(JSON_OBJECT('userName', U.name, 'review', R.review, 'stars', R.stars)) AS reviews
+  FROM
+      Products AS P
+  LEFT JOIN
+      Reviews AS R ON P.productID = R.productID
+  LEFT JOIN
+      Users AS U ON R.userID = U.userID
+  WHERE
+      P.productID = ${id}
+  GROUP BY
+      P.productID, P.productName, P.price, P.description, P.image;
+  
+  `;
+      const result = await db.query(sqlQuery);
+      if (result.length === 0) {
+        return res.status(404).json({ message: "Id not found" });
+      }
+      // console.log(result)
+      res.status(200).json({
+        message: "Products fetched successfully",
+        data: result,
+      });
     } else {
       res.status(400).json({ message: "Please provide id" });
     }

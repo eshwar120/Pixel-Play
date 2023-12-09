@@ -39,14 +39,17 @@ orderRoute.get("/:id", authMiddeware, async (req, res) => {
   const id = req.params.id;
   if (id) {
     try {
-      const sqlQuery = `SELECT * FROM Orders WHERE orderID = ${id}`;
+      const sqlQuery = `SELECT *
+      FROM Orders
+      INNER JOIN Products ON Products.productID = Orders.productID
+      WHERE Orders.orderID = ${id}`;
       const result = await db.query(sqlQuery);
       if (result.length === 0) {
         return res.status(404).json({ message: "Id not found" });
       }
 
       res.status(200).json({
-        message: "Reviews fetched successfully",
+        message: "Order details fetched successfully",
         data: result,
       });
     } catch (err) {

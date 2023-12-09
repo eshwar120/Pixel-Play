@@ -9,7 +9,7 @@ export default function OrdersInfo() {
 
   const { data, loading, error } = useApiGet('orders');
   // console.log(data)
-  console.log(data)
+  // console.log(data)
 
   return (
     <>
@@ -39,10 +39,13 @@ export default function OrdersInfo() {
                             height={"150px"}
                             src={item.image}
                             alt={item.productName} />
+                          <div>
                           <h6
                             className="pt-3">
                             {item.productName}
                           </h6>
+                          <h6 className='text-secondary order-id'>Odrer ID - HJGADFE7GUFY34U{item.orderID}</h6>
+                          </div>
                         </div>
                       </Link>
                     )
