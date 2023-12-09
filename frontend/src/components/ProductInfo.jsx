@@ -16,6 +16,12 @@ export default function ProductInfo() {
   const handleAddToCart = () => {
     addToCart(data[0]);
   }
+  // console.log(data)
+  // reviews: [
+
+  //   { stars: null, review: null, userName: null }
+
+  // ]
 
   return (
     <>
@@ -42,9 +48,10 @@ export default function ProductInfo() {
                     <h5>Rating :</h5>
                     <Rating
                       style={{ maxWidth: 150 }}
-                      value={4.3}
+                      value={data[0].reviews.map((item) => parseInt(item.stars)).reduce((curr,acc)=>acc+curr)/data[0].reviews.length}
                       readOnly={true}
                     />
+
                   </div>
                   <button
                     onClick={handleAddToCart}
@@ -54,9 +61,32 @@ export default function ProductInfo() {
                   </button>
                 </div>
               </div>
-              <div className='mt-5 text-light'>
-                <h4>Reviews :</h4>
-
+              <div className='mt-5 text-light d-flex flex-column gap-2'>
+                <h4>Reviews : {data[0].reviews[0].review !== null ? data[0].reviews.length : 0}</h4>
+                {
+                 data[0].reviews[0].review !== null && data[0].reviews.map((item, index) => {
+                    if (item.review === null) return <></>
+                    return <div
+                      key={index}
+                      className='text-decoration-none text-light'>
+                      <div
+                        className='d-flex p-3 gap-3 order rounded text-decoration-none flex-column'>
+                        <div className='d-flex justify-content-between w-100'>
+                          <h6
+                            className="pt-3">
+                            {item.userName.charAt(0).toUpperCase() + item.userName.slice(1)}
+                          </h6>
+                          <Rating
+                            style={{ maxWidth: 50 }}
+                            readOnly={true}
+                            value={item.stars}
+                          />
+                        </div>
+                        <h6 className='text-secondary'>{item.review}</h6>
+                      </div>
+                    </div>
+                  })
+                }
               </div>
             </div>
           )

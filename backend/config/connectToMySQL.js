@@ -9,7 +9,7 @@ async function query(sql, values) {
     const connection = await mySql.createConnection(process.env.DATABASE_URL);
 
     //result will have our query result and temp will be the schema
-    const [results, ...temp] = await connection.execute(sql, values);
+    const [results, ...temp] = await connection.query(sql, values);
     connection.end();
 
     return results;

@@ -76,7 +76,7 @@ stripeRoute.post(
       return;
     }
 
-    console.log(request.body);
+    console.log(req.body);
     const data = req.body.data.object;
     const eventType = req.body.type;
     console.log(eventType);
@@ -84,7 +84,6 @@ stripeRoute.post(
       stripe.customers
         .retrieve(data.customer)
         .then(async (customer) => {
-
           const userID = customer.metadata.userID;
           const orderData = JSON.parse(customer.metadata.cartData);
           if (userID) {
@@ -109,13 +108,17 @@ stripeRoute.post(
                 ist,
               ];
             });
-            const sqlQuery = `INSERT INTO Orders (unlockKey,price,productID,userID,orderTime) 
-                VALUES ?`;
+            console.log(values);
+            const sqlQuery = `INSERT INTO Orders (unlockKey, price, productID, userID, orderTime) VALUES ?`;
             const result = await db.query(sqlQuery, [values]);
+            console.log(result);
             res.status(200).send().end();
           }
         })
-        .catch((err) => console.log(err.message));
+        .catch((err) => {
+          console.log(err);
+          res.status(500).send().end();
+        });
     }
   }
 );

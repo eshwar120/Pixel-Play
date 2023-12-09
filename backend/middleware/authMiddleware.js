@@ -5,8 +5,9 @@ const authMiddeware = (req, res, next) => {
         const authToken = req.headers.authorization.split(" ")[1];
         // console.log(true, authToken)
         const verifiedToken = jwt.verify(authToken, process.env.ACCESS_TOKEN_KEY);
-        console.log(true, verifiedToken)
+        console.log(verifiedToken)
         req.userId = verifiedToken.userID;
+        // console.log(verifiedToken.userID);
         next()
     }
     catch(err) {
